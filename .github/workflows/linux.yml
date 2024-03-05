@@ -9,12 +9,13 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build-amd64:
     name: amd64-${{ matrix.libc }}
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         include:
@@ -22,22 +23,17 @@ jobs:
             libc: glibc
           - container: alpine:3.12
             libc: musl
-
     container:
       image: ${{ matrix.container }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Ubuntu Build
         if: ${{ matrix.container == 'ubuntu:18.04' }}
         run: bash ./scripts/exiftool/build-ubuntu.sh
-
       - name: Alpine Build
         if: ${{ matrix.container == 'alpine:3.12' }}
         run: sh ./scripts/exiftool/build-alpine.sh
-
       - name: Upload to releases
         uses: svenstaro/upload-release-action@v2
         id: attach_to_release
