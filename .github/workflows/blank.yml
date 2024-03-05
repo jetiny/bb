@@ -24,18 +24,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - uses: actions/setup-go@v5
-        with:
-          go-version: '1.21.5'
-      - uses: ATiltedTree/setup-rust@v1.0.5
-        with:
-          rust-version: '1.76.0'
+      #- uses: actions/setup-node@v4
+      #  with:
+      #    node-version: 20
+      #- uses: actions/setup-go@v5
+      #  with:
+      #    go-version: '1.21.5'
+      #- uses: ATiltedTree/setup-rust@v1.0.5
+      #  with:
+      #    rust-version: '1.76.0'
       - uses: actions/setup-python@v5.0.0
         with:
-          python-version: '3.9.6'
+          python-version: '3.12.2'
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
