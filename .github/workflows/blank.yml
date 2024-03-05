@@ -33,12 +33,19 @@ jobs:
       #- uses: ATiltedTree/setup-rust@v1.0.5
       #  with:
       #    rust-version: '1.76.0'
-      - uses: actions/setup-python@v5.0.0
+      #- uses: actions/setup-python@v5.0.0
+      #  with:
+      #    python-version: '3.12.2'
+      - uses: jcbhmr/setup-wasm-tools@v2
+      - uses: jwlawson/actions-setup-cmake@v2.0.1
         with:
-          python-version: '3.12.2'
+          cmake-version: '3.14.0'
+      - uses: mymindstorm/setup-emsdk@v14
+      - uses: aminya/setup-cpp@v0.37.0
+          
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: emcc -v
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
