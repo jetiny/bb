@@ -38,7 +38,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         id: attach_to_release
         with:
-          file: exiftool.exe
+          file: ./scripts/exiftool/exiftool.exe
           asset_name: exiftool-amd64-${{ matrix.libc }}
           tag: ${{ github.ref }}
           overwrite: true
